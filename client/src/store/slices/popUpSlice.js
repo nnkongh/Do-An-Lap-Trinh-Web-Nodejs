@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   settingPopup: false,
   addBookPopup: false,
@@ -7,6 +8,7 @@ const initialState = {
   returnBookPopup: false,
   addNewAdminPopup: false,
 };
+
 const popUpSlice = createSlice({
   name: "popup",
   initialState,
@@ -26,7 +28,7 @@ const popUpSlice = createSlice({
     toggleAddNewAdminPopup(state) {
       state.addNewAdminPopup = !state.addNewAdminPopup;
     },
-    toggleReturnNewBookPopup(state) {
+    toggleReturnBookPopup(state) {  // Đổi ở đây cho khớp state
       state.returnBookPopup = !state.returnBookPopup;
     },
     closeAllPopup(state) {
@@ -46,7 +48,7 @@ export const {
   toggleAddNewAdminPopup,
   toggleReadBookPopup,
   toggleRecordBookPopup,
-  toggleReturnNewBookPopup,
+  toggleReturnBookPopup,  // Và export đúng tên này
   toggleSettingPopup,
 } = popUpSlice.actions;
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -7,9 +7,23 @@ import OTP from "./pages/OTP";
 import Register from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 import { ToastContainer } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "./store/slices/authSlice.js";
+import { fetchAllUsers } from "./store/slices/userSlice.js";
 
 const App = () => {
-  console.log("App loaded")
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUser());
+    if (isAuthenticated && user?.role === "Admin") {
+      dispatch(fetchAllUsers());
+    }
+  }, [dispatch, isAuthenticated, user]);
+
+  console.log("App loaded");
+
   return (
     <Router>
       <Routes>
