@@ -4,6 +4,7 @@ server/node_modules
 server/config
 # VSCode
 .vscode/
+Do-An-Lap-Trinh-Web-Nodejs/
 
 # Logs
 logs
