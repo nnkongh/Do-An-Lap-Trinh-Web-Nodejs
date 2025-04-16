@@ -26,19 +26,19 @@ const MyBorrowedBooks = () => {
     <main className="relative flex-1 p-6 pt-28">
       <Header/>
       <header className="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
-      <h2 className="text-xl font-medium md:text-2x1 md:font-semibold">Borrowed Books</h2>
+      <h2 className="text-xl font-medium md:text-2x1 md:font-semibold">Sách đã mượn</h2>
       </header>
       <header className="flex flex-col gap-3 sm:flex-row md:items-center">
       <button className={`relative rounded sm:rounded-tr-none sm:rounded-br-none sm:rounded-tl-lg sm:rounded-tl-lg
         text-center border-2 font-semibold py-2 w-full sm:w-72 ${filter === "returned" ? "bg-black text-white border-black"  :"bg-gray-200 text-black border-gray-200 hover:bg-gray-300"}`}
-        onClick={() => setFilter("returned")}>Returned Books</button>
+        onClick={() => setFilter("returned")}>Sách đã trả</button>
 
       <button className={`relative rounded sm:rounded-tl-none sm:rounded-bl-none sm:rounded-tr-lg sm:rounded-br-lg
         text-center border-2 font-semibold py-2 w-full sm:w-72 ${filter === "nonReturned" ? "bg-black text-white border-black"  :"bg-gray-200 text-black border-gray-200 hover:bg-gray-300"}`}
         onClick={() => setFilter("nonReturned")}
       
       
-      >Non-Returned Books
+      >Sách chưa trả
       </button>
       </header>
 
@@ -50,11 +50,11 @@ const MyBorrowedBooks = () => {
                   <tr className="bg-gray-200">
                     
                     <th className="px-4 py-2 text-left">Id</th>
-                    <th className="px-4 py-2 text-left">Book Title</th>
-                    <th className="px-4 py-2 text-left">Date Time</th>
-                    <th className="px-4 py-2 text-left">Due Date</th>
-                    <th className="px-4 py-2 text-left">Returned</th>
-                    <th className="px-4 py-2 text-left">View</th>
+                    <th className="px-4 py-2 text-left">Tiêu đề sách</th>
+                    <th className="px-4 py-2 text-left">Thời gian</th>
+                    <th className="px-4 py-2 text-left">Hạn trả</th>
+                    <th className="px-4 py-2 text-left">Đã trả</th>
+                    <th className="px-4 py-2 text-left">Xem</th>
                   </tr>
                   <tbody>
                     {
@@ -77,14 +77,12 @@ const MyBorrowedBooks = () => {
             </div>
 
           ) : filter === "returned" ? (
-            <h3 className="text-3xl mt-5 font-medium">No returned books found</h3>
+            <h3 className="text-3xl mt-5 font-medium">Không tìm thấy sách nào đả trả</h3>
           ) : (
-            <h3 className="text-3xl mt-5 font-medium">No non-returned books found</h3>
+            <h3 className="text-3xl mt-5 font-medium">Không tìm thấy sách nào đang được mượn mà chưa được trả.</h3>
             )}
-        {readBookPopup && <ReadBookPopup book={readBook}/>}
-
-
     </main>
+    {readBookPopup && <ReadBookPopup book={readBook}/>}
   </>;
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BookA, NotebookPen } from "lucide-react";
-import {useDisPatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {toggleAddBookPopup, toggleReadBookPopup,toggleRecordBookPopup,} from "../store/slices/popUpSlice";
 import {toast} from "react-toastify"
 
@@ -10,7 +10,7 @@ import AddBookPopup from "../popups/AddBookPopup"
 import ReadBookPopup from "../popups/ReadBookPopup"
 import RecordBookPopup from "../popups/RecordBookPopup"
 const BookManagement = () => {
-  const dispatch = useDisPatch();
+  const dispatch = useDispatch();
   const {loading, error, message, books} = useSelector((state) => state.book);
   const {isAuthenticated, user} = useSelector((state) => state.auth);
   const {
@@ -35,7 +35,7 @@ const BookManagement = () => {
     setBorrowBookId(bookId);
     dispatch(toggleRecordBookPopup());
   };
-  //-----------NGAY ĐÂY NÀY----------
+
   useEffect(() => {
     if(message || borrowSliceMessage ){
       toast.sucsses(message || borrowSliceMessage);
@@ -44,7 +44,7 @@ const BookManagement = () => {
       dispatch(resetBookSlice());
       dispatch(resetBorrowSlice());
     };
-    ///-----------NGAY ĐÂY NÀY----------
+
     if(error|| borrowSliceError){
       toast.error(error || borrowSliceError);
       dispatch(resetBookSlice());

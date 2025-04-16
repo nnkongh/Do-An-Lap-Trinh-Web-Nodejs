@@ -80,5 +80,9 @@ export const addBook = (data) => async (dispatch) => {
       dispatch(bookSlice.actions.addBookFailed(err.response.data.message));
     });
 };
-
+//
+export const resetBookSlice =()=>(dispatch)=>{
+    dispatch(bookSlice.actions.resetBookSlice());
+};
+//
 export default bookSlice.reducer;
