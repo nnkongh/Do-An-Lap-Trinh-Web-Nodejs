@@ -1,7 +1,8 @@
 
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import { toggleAddBookPopup } from "./popUpSlice";
+import {toast} from "react-toastify"
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -69,7 +70,11 @@ export const addBook = (data) => async (dispatch) => {
       },
     })
     .then((res) => {
-      dispatch(bookSlice.actions.addBookSuccess(res.data.message));
+      bookSlice.actions.addBookSuccess(res.data.message);
+      toast.success(res.data.message);
+      dispatch(toggleAddBookPopup());
+      dispatch(fetchAllBooks());
+
     })
     .catch((err) => {
       dispatch(bookSlice.actions.addBookFailed(err.response.data.message));

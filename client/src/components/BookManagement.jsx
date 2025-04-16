@@ -21,12 +21,15 @@ const BookManagement = () => {
 
 
   const {loading: borrowSliceLoading, error:borrowSliceError, message:borrowSliceMessage } = useSelector(state => state.borrow)
+
+
   const [readBook,setReadBook] = useState({});
   const openReadPopup = (id) => {
     const book = book.find(book => book._id === id);
     setReadBook(book);
     dispatch(toggleReadBookPopup());
   };
+  
   const [borrowBookId,setBorrowBookId] = useState("");
   const openRecordBookPopup = (bookId) => {
     setBorrowBookId(bookId);
@@ -48,17 +51,15 @@ const BookManagement = () => {
       dispatch(resetBorrowSlice());
     };
   },[dispatch, message,error,loading,borrowSliceError,borrowSliceLoading,borrowSliceMessage]);
-  const [searchedKeyword,setSearchedKeyword] = useState(); //
+  const [searchedKeyword,setSearchedKeyword] = useState(""); //
+  
   const handleSearch = (e)=>{
     setSearchedKeyword(e.target.value.toLowerCase());
   };
   const searchedBooks = books.filter(book => 
     book.title.toLowerCase().includes(searchedKeyword)
   );
-  if(books){
-    console.log(books);
-    consolse.log(searchedBooks);
-  }
+
   return <>
     <main className="relative flex-1 p-6 pt-28">
       <Headers/>
@@ -68,7 +69,7 @@ const BookManagement = () => {
         <div className="flex  flex-col lg:flex-row spacy-y-4 lg:space-y-0 lg:space-x-4">
           {
             isAuthenticated && user?.role === "Admin" && (
-              <button onClick={() => dispatch(toggleAddBookPopup)} className="relative pl-14 w-full sm:w-52 flex gap-4 justify-center items-center py-2 px-4 bg-black text-while rounded-md hover:bg-gray-800">
+              <button onClick={() => dispatch(toggleAddBookPopup())} className="relative pl-14 w-full sm:w-52 flex gap-4 justify-center items-center py-2 px-4 bg-black text-while rounded-md hover:bg-gray-800">
                 <span className="bg-white flex justify-center items-center overflow-hidden rounded-full text-black w-[25px] h-[25px] text-[27px] absolute left-5">+</span>
                 Add Book</button>
             )
@@ -122,7 +123,7 @@ const BookManagement = () => {
                   isAuthenticated && user?.role === "Admin" && (
                     <td className="px-4 py-2 flex space-x-2 my-3 justify-center">
                       <BookA onClick={() => openReadPopup(book._id)}/>
-                        <NotebookPen onClick={() => openReadPopup(book._id)}/>
+                        <NotebookPen onClick={() => openRecordBookPopup(book._id)}/>
                       <button className="text-blue-600 hover:underline">Edit</button>
                     </td>
                   )

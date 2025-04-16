@@ -15,7 +15,7 @@ const Home = () => {
   const [selectedComponent, setSelectedComponent] = useState("");
   const { user, isAuthenticated } = useSelector((state) => state.auth);
 
-  if (!isAuthenticated) {
+   if (!isAuthenticated) {
     console.log("isAuthenticated:", isAuthenticated);
     console.log("user:", user);
     return <Navigate to="/login"/>;

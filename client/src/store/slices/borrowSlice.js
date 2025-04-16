@@ -136,6 +136,7 @@ export const recordBorrowedBook = (email, id) => async (dispatch) => {
     )
     .then((res) => {
       dispatch(borrowSlice.actions.recordBookSuccess(res.data.message));
+      dispatch(toggleRecordBookPopup());
     })
     .catch((err) => {
       dispatch(
