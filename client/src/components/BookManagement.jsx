@@ -25,8 +25,8 @@ const BookManagement = () => {
 
   const [readBook,setReadBook] = useState({});
   const openReadPopup = (id) => {
-    const book = book.find(book => book._id === id);
-    setReadBook(book);
+    const foundBook = books.find(book => book._id === id);  // Sử dụng biến books từ useSelector
+    setReadBook(foundBook);
     dispatch(toggleReadBookPopup());
   };
   
@@ -62,7 +62,6 @@ const BookManagement = () => {
 
   return <>
     <main className="relative flex-1 p-6 pt-28">
-      <Headers/>
       {/*Sub header*/}
       <header className="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
         <h2 className="text-xl font-medium md:text-2x1 md:font-semibold">{user && user.role === "Admin" ? "Book Management" : "Books"}</h2>
@@ -142,7 +141,8 @@ const BookManagement = () => {
     </main>
     {addBookPopup && <AddBookPopup/>}
     {readBookPopup && <ReadBookPopup book={readBook}/>}
-    {readBookPopup && <RecordBookPopup bookId={borrowBookId}/>}
+    {recordBookPopup && <RecordBookPopup bookId={borrowBookId}/>}
+
      {/* RecordBook {bookId} */}
   </>;
 };

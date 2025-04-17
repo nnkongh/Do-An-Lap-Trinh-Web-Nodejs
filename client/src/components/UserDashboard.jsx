@@ -5,7 +5,7 @@ import browseIcon from "../assets/pointing.png";
 import bookIcon from "../assets/book-square.png";
 import { Pie } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux"
-import Header from "../layout/Header"
+import Header from "../layout/Headers"
 import {
   Chart as ChartJS,
   CategoryScale,
