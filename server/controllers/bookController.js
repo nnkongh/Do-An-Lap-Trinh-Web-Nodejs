@@ -24,7 +24,6 @@ export const addBook = catchAsyncErrors(async (req, res, next) => {
 export const deleteBook = catchAsyncErrors(async (req, res, next) => {
     const { id } = req.params;
     const book = await Book.findById(id);
-
     if (!book) {
         return next(new ErrorHandler("Sách không tìm thấy", 404));
     }

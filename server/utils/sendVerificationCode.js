@@ -1,7 +1,10 @@
+import { generateVerificationOtpEmailTemplate } from "./emailTemplates.js";
+import { sendEmail } from "./sendEmail.js";
+
 export async function sendVerificationCode(verrificationCode, email, res){
     try{
         const message=generateVerificationOtpEmailTemplate(verrificationCode);
-        sendmail({
+        sendEmail({
             email,
             subject:"Mã xác nhận(Thư viện sách online)",
             message,

@@ -6,7 +6,7 @@ dotenv.config()
 export const connectDB = () => {
   mongoose
     .connect(process.env.MONGO_URI, {
-      dbName: "HailHitler", // Đổi tên database cho phù hợp
+      dbName: "BookLibrary", 
       
     })
     .then(() => {

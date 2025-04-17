@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
-
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -54,16 +53,21 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-userSchema.methods.generateVerificationCode = function () {
-  function generateRandomFiveDigitNumber() {
-    return Math.floor(10000 + Math.random() * 90000); // Đảm bảo đúng 5 chữ số
-  }
+  userSchema.methods.generateVerificationCode = function () {
+    function generateRandomFiveDigitNumber() {
+      const firstDigit = Math.floor(Math.random() * 9) + 1;
+      const remainingDigits = Math.floor(Math.random() * 10000)
+        .toString()
+        .padStart(4, 0)
+      return parseInt(firstDigit + remainingDigits)
+      // Đảm bảo đúng 5 chữ số
+    }
 
-  const verificationCode = generateRandomFiveDigitNumber();
-  this.verificationCode = verificationCode;
-  this.verificationCodeExpire = new Date(Date.now() + 15 * 60 * 1000); // 15 phút hết hạn
-  return verificationCode;
-};
+    const verificationCode = generateRandomFiveDigitNumber();
+    this.verificationCode = verificationCode;
+    this.verificationCodeExpire = Date.now() + 15 * 60 * 1000; // 15 phút hết hạn
+    return verificationCode;
+  };
 
 userSchema.methods.generateToken = function () {
   if (!process.env.JWT_SECRET_KEY) {
@@ -73,16 +77,16 @@ userSchema.methods.generateToken = function () {
   return jwt.sign(
     { id: this._id },
     process.env.JWT_SECRET_KEY,
-    { expiresIn: process.env.JWT_EXPIRE || "7 ngày" } // Mặc định 7 ngày
+    { expiresIn: process.env.JWT_EXPIRE || "7d" } // Mặc định 7 ngày
   );
 };
-userSchema.methods.getResetPasswordToken=function(){
+userSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
   this.resetPasswordToken = crypto
-  .createMash("an123lang")
-  .update(resetToken)
-  .digest("hex");
-  this.resetPasswordExpire=Date.now()+15*60*1000;
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
   return resetToken;
 };
 export const User = mongoose.model("User", userSchema);
