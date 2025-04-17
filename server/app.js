@@ -1,5 +1,4 @@
 import express from "express";
-import { config } from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { connectDB } from "./database/db.js";
@@ -12,10 +11,11 @@ import expressFileupload from "express-fileupload";
 import fs from "fs";
 import { notifyUsers } from "./services/notifyUsers.js";
 import { removeUnverifiedAccounts } from "./services/removeUnverifiedAccounts.js";
+import dotenv from "dotenv"
 
 // Load config từ file .env
-config({ path: "./config/config.env" });
-
+dotenv.config({ path: "./config/config.env" });
+console.log(`Server is running on port ${process.env.PORT}`)
 // Kiểm tra file config.env
 if (!fs.existsSync("./config/config.env")) {
   console.error("⚠️ Thiếu file config.env. Vui lòng kiểm tra lại.");
@@ -32,7 +32,7 @@ if (!fs.existsSync("./temp/")) {
 }
 
 // Kết nối tới database
-connectDB();
+
 
 export const app = express();
 

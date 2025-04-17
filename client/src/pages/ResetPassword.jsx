@@ -39,7 +39,7 @@ const ResetPassword = () => {
   }, [error, dispatch]);
 
   if (isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to={"/"} />;
   }
 
   return (

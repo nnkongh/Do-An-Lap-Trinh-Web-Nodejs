@@ -10,20 +10,21 @@ import Catalog from "../components/Catalog";
 import Users from "../components/Users";
 import MyBorrowedBooks from "../components/MyBorrowedBooks";
 
+
 const Home = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState("");
   const { user, isAuthenticated } = useSelector((state) => state.auth);
-
-   if (!isAuthenticated) {
+  if (!isAuthenticated) {
     console.log("isAuthenticated:", isAuthenticated);
     console.log("user:", user);
-    return <Navigate to="/login"/>;
+    return <Navigate to="/login" />;
+
   }
 
   return (
     <>
-    
+
       <div className="relative md:pl-64 flex min-h-screen bg-gray-100">
         <div className="md:hidden z-10 absolute right-6 top-4 sm:top-6 flex justify-center items-center bg-black rounded-md h-9 w-9 text-white">
           <GiHamburgerMenu
@@ -77,11 +78,11 @@ const Home = () => {
                 );
                 break;
             }
-          })()}  
+          })()}
         </div>
       </div>
     </>
   );
-};
+}
 
 export default Home;

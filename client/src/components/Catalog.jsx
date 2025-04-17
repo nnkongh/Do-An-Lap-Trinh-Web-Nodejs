@@ -58,11 +58,11 @@ const Catalog = () => {
       dispatch(fetchAllBooks())
       dispatch(fetchAllBorrowedBooks())
       dispatch(resetBookSlice());
-      dispatch(resetBorrowBookSlice()); 
+      dispatch(resetBorrowSlice()); 
     }
     if(error){
       toast.error(error);
-      dispatch(resetBorrowBookSlice());
+      dispatch(resetBorrowSlice());
     }
   }, [dispatch,error,loading]);
  

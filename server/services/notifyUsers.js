@@ -1,8 +1,8 @@
 import { error } from "console";
 import cron from "node-cron";
-import { Borrow } from "../server/models/borrowModel";
-import { User } from "../server/models/userModel";
-import { sendEmail } from "../server/utils/sendEmail";
+import { Borrow } from "../models/borrowModel.js";
+import { User } from "../models/userModel.js";
+import { sendEmail } from "../utils/sendEmail.js";
 export const notifyUsers = () => {
     cron.schedule("*/30 * * * *", async () => {
         try {
