@@ -90,8 +90,9 @@ export const verifyOTP = catchAsyncErrors(async (req, res, next)=> {
     }
 });
 export const login =catchAsyncErrors(async(req, res, next)=>{
+    
     const {email,password}=req.body;
-    if (!email||password){
+    if (!email||!password){
         return next(new ErrorHandler("Vui lòng điền hết vào ô trống", 400))
     }
     const user = await User.findOne({email, accountVerified: true}).select("+password");
@@ -102,6 +103,7 @@ export const login =catchAsyncErrors(async(req, res, next)=>{
     if (!isPasswordMatched){
         return next(new ErrorHandler("Email hoặc password không đúng", 400));
     }
+    
     sendToken(user, 200, "user đăng nhập thành công", res);
 });
 export const logout = catchAsyncErrors(async(req,res,next)=>{
