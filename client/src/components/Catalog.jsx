@@ -6,6 +6,7 @@ import {toggleReturnBookPopup} from "../store/slices/popUpSlice"
 import {toast} from "react-toastify"
 import {fetchAllBooks, resetBookSlice} from "../store/slices/bookSlice"
 import {fetchAllBorrowedBooks, resetBorrowSlice} from "../store/slices/borrowSlice"
+import Header from "../layout/Headers";
 import ReturnBookPopup from "../popups/ReturnBookPopup"
 import { formatProdErrorMessage } from "@reduxjs/toolkit";
 const Catalog = () => {
@@ -45,7 +46,7 @@ const Catalog = () => {
     return dueDate <= currentDate;
   });
   const booksToDisplay = filter === "borrowed" ? borrowedBooks : overdueBooks;
-  const [email,setEmail] = useSt("");
+  const [email,setEmail] = useState("");
   const [borrowedBookId,setBorrowedBookId] = useState("");
   const openReturnBookPopup = (bookId,email) => {
     setBorrowedBookId(bookId);
