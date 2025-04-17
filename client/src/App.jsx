@@ -17,18 +17,23 @@ const App = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   
-
   useEffect(() => {
     dispatch(getUser());
-    dispatch(fetchAllBooks()); //
-    if (isAuthenticated && user?.role === "User") {
+    dispatch(fetchAllBooks());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!isAuthenticated || !user?.role) return;
+
+    if (user.role === "User") {
       dispatch(fetchUserBorrowedBooks());
     }
-    if (isAuthenticated && user?.role === "Admin") {
+
+    if (user.role === "Admin") {
       dispatch(fetchAllUsers());
       dispatch(fetchAllBorrowedBooks());
     }
-  }, [dispatch, isAuthenticated, user]);
+  }, [dispatch, isAuthenticated, user?.role]);
 
   console.log("App loaded");
 
