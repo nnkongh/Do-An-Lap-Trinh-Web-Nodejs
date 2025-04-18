@@ -107,7 +107,11 @@ const UserDashboard = () => {
         <div className="flex-[2] flex-col gap-7 lg:flex-row lg:items-center xl:flex-col justify-between
         xl:gap-20 py-5">
           <div className="xl:flex-[4] flex items-end w-full content-center">
-            <Pie date={data} options={{cutout: 0 }} className="mx-auto lg:mx-0 w-full h-auto"/>
+          {data?.labels?.length && data?.datasets?.length ? (
+            <Pie data={data} options={{cutout: 0 }} className="mx-auto lg:mx-0 w-full h-auto"/>
+          ) : (
+            <p>Đang tải biểu đồ</p>
+          )}
           </div>
           <div className="flex items-center p-8 w-full sm:w-[400px] xl:w-fit mr-5 xl:p-3 2xl:p-6 gap-5 h-fit xl:min-h-[150px] bg-white xl:flex-1 rounded-lg">
             <img src={logo} alt="logo" className="w-auto h-12 2xl:h-20" />

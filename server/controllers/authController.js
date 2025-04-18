@@ -7,6 +7,8 @@ import {sendVerificationCode} from "../utils/sendVerificationCode.js";
 import {sendToken} from "../utils/sendtoken.js";
 import {sendEmail} from "../utils/sendEmail.js";
 import { generateForgotPassWordEmailTemplate } from "../utils/emailTemplates.js";
+
+
 export const register = catchAsyncErrors(async (req, res, next) => {
     try {
         const { name, email, password, role } = req.body;
@@ -48,6 +50,8 @@ export const register = catchAsyncErrors(async (req, res, next) => {
         next(error);
     }
 });
+
+
 export const verifyOTP = catchAsyncErrors(async (req, res, next)=> {
     const {email,otp} =req.body;
     if(!email|| !otp){
@@ -73,7 +77,7 @@ export const verifyOTP = catchAsyncErrors(async (req, res, next)=> {
         }else{
             user=userAllEntries[0];
         }
-        if(user.verificationCode!==Number(otp)){
+        if(user.verificationCode !== Number(otp)){
             return next(new ErrorHandler("Mã otp ko hợp lệ",400));
         }
         const currentTime=Date.now();
