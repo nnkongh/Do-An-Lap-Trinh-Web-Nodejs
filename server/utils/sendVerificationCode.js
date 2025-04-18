@@ -4,7 +4,7 @@ import { sendEmail } from "./sendEmail.js";
 export async function sendVerificationCode(verrificationCode, email, res){
     try{
         const message=generateVerificationOtpEmailTemplate(verrificationCode);
-        sendEmail({
+        await sendEmail({
             email,
             subject:"Mã xác nhận(Thư viện sách online)",
             message,

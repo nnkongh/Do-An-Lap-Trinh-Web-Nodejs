@@ -9,7 +9,7 @@ export const sendToken = (user, statusCode, message, res) => {
         ),
         httpOnly: true,
     })
-    .json({
+    .json({ 
         success: true,
         user,
         message,
