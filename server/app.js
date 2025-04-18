@@ -62,7 +62,7 @@ app.use("/api/v1/user", userRouter);
 
 notifyUsers();
 removeUnverifiedAccounts();
-// Gọi connectDB() đúng cách
+
 connectDB();
 
 app.use(errorMiddleware);

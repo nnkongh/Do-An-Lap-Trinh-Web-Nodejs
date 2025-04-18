@@ -12,7 +12,7 @@ import { getUser } from "./store/slices/authSlice.js";
 import { fetchAllUsers } from "./store/slices/userSlice.js";
 import { fetchAllBooks } from "./store/slices/bookSlice.js";
 import { fetchAllBorrowedBooks, fetchUserBorrowedBooks } from "./store/slices/borrowSlice.js";
-
+import MyBorrowedBooks from "./components/MyBorrowedBooks";
 const App = () => {
   const { user, isAuthenticated } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -47,6 +47,7 @@ const App = () => {
         <Route path="/password/forgot" element={<ForgotPassword />} />
         <Route path="/otp-verification/:email" element={<OTP />} />
         <Route path="/password/reset/:token" element={<ResetPassword />} />
+        <Route path="/borrowed-books" element={<MyBorrowedBooks />} />
       </Routes>
       <ToastContainer theme="dark" />
     </Router>

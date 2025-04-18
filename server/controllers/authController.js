@@ -142,7 +142,7 @@ export const forgotPassword=catchAsyncErrors(async(req,res,next)=>{
     if (!user) {
         return next (new ErrorHandler("email không hợp lệ", 400));
     }
-    const resetToken =user.getRestPasswordToken();
+    const resetToken =user.getResetPasswordToken();
     await user.save({validateBeforeSave: false});
     const resetPasswordUrl= `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
     const message= generateForgotPassWordEmailTemplate(resetPasswordUrl);

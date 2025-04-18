@@ -47,8 +47,8 @@ const Login = () => {
                 <img src={logo} alt="logo" className="h-24 w-auto" />
               </div>
             </div>
-            <h1 className="text-4xl font-medium text-center mb-8">Welcome Back!!!</h1>
-            <p className="text-gray-800 text-center mb-6">Please enter your credentials to log in</p>
+            <h1 className="text-4xl font-medium text-center mb-8">Xin chào!!!</h1>
+            <p className="text-gray-800 text-center mb-6">Vui lòng đăng nhập</p>
             <form onSubmit={handleLogin}>
               <div className="mb-4">
                 <input
@@ -68,7 +68,7 @@ const Login = () => {
                   className="w-full px-4 py-3 border border-black rounded-md focus:outline-none"
                 />
               </div>
-              <Link to="/password/forgot" className="font-semibold text-black mb-12 block">Forgot Password</Link>
+              <Link to="/password/forgot" className="font-semibold text-black mb-12 block">Quên mật khẩu</Link>
               <div className="block md:hidden font-semibold mt-5">
                 <p>
                   New to our platform?{" "}

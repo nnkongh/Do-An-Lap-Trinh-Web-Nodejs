@@ -1,9 +1,9 @@
-import React from "react";
+import React, {useState} from "react";
 import { BookA } from "lucide-react";
 import { useDispatch,useSelector } from "react-redux";
 import { toggleReadBookPopup } from "../store/slices/popUpSlice";
 import ReadBookPopup from "../popups/ReadBookPopup";
-
+import Header from "../layout/Headers";
 const MyBorrowedBooks = () => {
   const dispatch = useDispatch();
   const {books} = useSelector(state => state.book);
@@ -15,14 +15,31 @@ const MyBorrowedBooks = () => {
       setReadBook(book);
       dispatch(toggleReadBookPopup());
     };
+    const formatDate = (timeStamp) => {
+      const date = new Date(timeStamp);
+  
+      const formattedDate = `${String(date.getDate()).padStart(2, "0")}-${String(
+        date.getMonth() + 1
+      ).padStart(2, "0")}-${String(date.getFullYear())}`;
+  
+      const formattedTime = `${String(date.getHours()).padStart(2, "0")}:${String(
+        date.getMinutes()
+      ).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`;
+      const result=`${formattedDate} ${formattedTime}`;
+    } 
+
+    const [filter,setFilter] = useState("returned");
+
     const returnedBooks = userBorrowedBooks?.filter((book) => {
       return book.returned === true;
     })
     const nonReturnedBooks = userBorrowedBooks?.filter((book) => {
-      return book.returned === true;
+      return book.returned === false;
     })
     const booksToDisplay = filter === "returned" ? returnedBooks : nonReturnedBooks 
+    console.log("Render MyBorrowedBooks");
   return <>
+  
     <main className="relative flex-1 p-6 pt-28">
       <Header/>
       <header className="flex flex-col gap-3 md:flex-row md:justify-between md:items-center">
@@ -56,7 +73,9 @@ const MyBorrowedBooks = () => {
                     <th className="px-4 py-2 text-left">Đã trả</th>
                     <th className="px-4 py-2 text-left">Xem</th>
                   </tr>
-                  <tbody>
+                  
+                </thead>
+                <tbody>
                     {
                       booksToDisplay.map((book,index) => (
                         <tr key={index} className={(index + 1)% 2 === 0 ? "bg-gray-50" : ""}>
@@ -72,7 +91,6 @@ const MyBorrowedBooks = () => {
                        
                     )}
                   </tbody>
-                </thead>
               </table>
             </div>
 

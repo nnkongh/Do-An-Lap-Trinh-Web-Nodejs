@@ -89,7 +89,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
 
           {isAuthenticated && user?.role === "User" && (
             <button
-              onClick={() => dispatch(toggleSettingPopup())}
+              onClick={() => setSelectedComponent("My Borrowed Books")}
               className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
             >
               <img src={catalogIcon} alt="icon" /> <span>My Borrowed Books</span>
