@@ -9,7 +9,7 @@ import {sendEmail} from "../utils/sendEmail.js";
 import { generateForgotPassWordEmailTemplate } from "../utils/emailTemplates.js";
 export const register = catchAsyncErrors(async (req, res, next) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, role } = req.body;
 
         if (!name || !email || !password) {
             return next(new ErrorHandler("Xin hãy nhập hết vào chỗ trống", 400));
@@ -35,6 +35,9 @@ export const register = catchAsyncErrors(async (req, res, next) => {
             name,
             email,
             password: hashedPassword,
+            role,
+            accountVerified: role === "Admin" ? true : false, // hoặc tùy config của bạn
+
         });
 
         const verificationCode = user.generateVerificationCode(); // Sửa lỗi gọi method
@@ -56,7 +59,7 @@ export const verifyOTP = catchAsyncErrors(async (req, res, next)=> {
             accountVerified:false,
         }).sort({createdAt:-1});
 
-        if(userAllEntries){
+        if(!userAllEntries || userAllEntries.length === 0){
             return next(new ErrorHandler("người dùng không tìm thấy", 404));
         }
         let user;
@@ -137,7 +140,7 @@ export const forgotPassword=catchAsyncErrors(async(req,res,next)=>{
     }
     const resetToken =user.getRestPasswordToken();
     await user.save({validateBeforeSave: false});
-    const resetPasswordUrl= `${process.env.FRONTEND_URL}/password/reset${resetToken}`;
+    const resetPasswordUrl= `${process.env.FRONTEND_URL}/password/reset/${resetToken}`;
     const message= generateForgotPassWordEmailTemplate(resetPasswordUrl);
     
     try{

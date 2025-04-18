@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'; // Thêm useState import
 import closeIcon from "../assets/close-square.png";
-import { toggleSettingPopup } from '../store/slices/popUpSlice';
-import { useDispatch,useSelector } from 'react-redux';
+import { toggleSettingPopup } from '../store/slices/popUpSlice'; // Giữ chỉ một dòng import
+import { useDispatch, useSelector } from 'react-redux';
 import settingIcon from '../assets/setting.png';
-import { toggleSettingPopup } from '../store/slices/popUpSlice';
+import { updatePassword } from '../store/slices/authSlice';
 const SettingPopup = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -14,13 +14,13 @@ const SettingPopup = () => {
 
   const handleUpdatePassword = (e) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("currentPassword", currentPassword);
-    data.append("newPassword", newPassword);
-    data.append("confirmNewPassword", confirmNewPassword);
+    const data = {
+      currentPassword,
+      newPassword,
+      confirmNewPassword,
+    };
     dispatch(updatePassword(data));
   };
-
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-50">
@@ -95,11 +95,10 @@ const SettingPopup = () => {
               </button>
             </div>
           </form>
-
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SettingPopup
+export default SettingPopup;

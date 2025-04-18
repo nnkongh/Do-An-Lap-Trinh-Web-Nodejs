@@ -1,8 +1,8 @@
-
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toggleAddBookPopup } from "./popUpSlice";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
+
 const bookSlice = createSlice({
   name: "book",
   initialState: {
@@ -40,6 +40,19 @@ const bookSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    deleteBookRequest(state) {
+      state.loading = true;
+      state.error = null;
+      state.message = null;
+    },
+    deleteBookSuccess(state, action) {
+      state.loading = false;
+      state.message = action.payload;
+    },
+    deleteBookFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
     resetBookSlice(state) {
       state.error = null;
       state.message = null;
@@ -70,19 +83,35 @@ export const addBook = (data) => async (dispatch) => {
       },
     })
     .then((res) => {
-      bookSlice.actions.addBookSuccess(res.data.message);
+      dispatch(bookSlice.actions.addBookSuccess(res.data.message));
       toast.success(res.data.message);
       dispatch(toggleAddBookPopup());
       dispatch(fetchAllBooks());
-
     })
     .catch((err) => {
       dispatch(bookSlice.actions.addBookFailed(err.response.data.message));
     });
 };
-//
-export const resetBookSlice =()=>(dispatch)=>{
-    dispatch(bookSlice.actions.resetBookSlice());
+
+// 🆕 Delete book action
+export const deleteBook = (id) => async (dispatch) => {
+  dispatch(bookSlice.actions.deleteBookRequest());
+  await axios
+  .delete(`http://localhost:4000/api/v1/book/delete/${id}`, {
+    withCredentials: true,
+  })
+  .then((res) => {
+    dispatch(bookSlice.actions.deleteBookSuccess(res.data.message));
+    toast.success(res.data.message);
+    dispatch(fetchAllBooks());
+  })
+  .catch((err) => {
+    dispatch(bookSlice.actions.deleteBookFailed(err.response.data.message));
+  });
 };
-//
+
+export const resetBookSlice = () => (dispatch) => {
+  dispatch(bookSlice.actions.resetBookSlice());
+};
+
 export default bookSlice.reducer;
