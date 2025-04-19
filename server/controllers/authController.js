@@ -23,7 +23,7 @@ export const register = catchAsyncErrors(async (req, res, next) => {
         }
 
         const registrationAttemptsByUser = await User.find({ email, accountVerified: false });
-        if (registrationAttemptsByUser.length > 5) {
+        if (registrationAttemptsByUser.length > 50) {
             return next(new ErrorHandler("Bạn đã vượt quá mức đăng ký cho phép, vui lòng liên hệ hỗ trợ", 400));
         }
 
@@ -167,6 +167,7 @@ export const forgotPassword=catchAsyncErrors(async(req,res,next)=>{
 });
 export const resetPassword = catchAsyncErrors(async(req,res,next)=>{
     const {token} =req.params;
+    console.log("user reset")
     const resetPasswordToken =crypto.createHash("sha256").update(token).digest("hex");
     const user=await User.findOne({
         resetPasswordToken,
@@ -196,10 +197,12 @@ export const resetPassword = catchAsyncErrors(async(req,res,next)=>{
     user.password=hashedPassword;
     user.resetPasswordToken= undefined;
     user.resetPasswordExpire=undefined;
+    console.log("Saved user succes")
     await user.save();
     sendToken(user, 200,"mật khẩu đã được đổi thành công", res );
 });
 export const updatePassword=catchAsyncErrors(async(req,res,next)=>{
+    
     const user =await User.findById(req.user._id).select("+password"); 
     const {currentPassword, newPassword, confirmNewPassword}=req.body;
     if(!currentPassword || !newPassword || !confirmNewPassword){

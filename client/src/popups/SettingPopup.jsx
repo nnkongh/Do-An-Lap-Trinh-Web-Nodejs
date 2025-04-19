@@ -33,7 +33,7 @@ const SettingPopup = () => {
                 alt="setting-icon"
                 className="bg-gray-300 p-5 rounded-lg"
               />
-              <h3 className="text-xl font-bold">Change Credentials</h3>
+              <h3 className="text-xl font-bold">Đổi mật khẩu</h3>
             </div>
             <img
               src={closeIcon}
@@ -44,37 +44,37 @@ const SettingPopup = () => {
           <form onSubmit={handleUpdatePassword}>
             <div className="mb-4 sm:flex gap-4 items-center">
               <label className="block text-gray-900 font-medium w-full">
-                Enter Current Password
+                Mật khẩu hiện tại
               </label>
               <input
                 type="password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                placeholder="Current Password"
+                placeholder="Mật khẩu hiện tại"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md"
               />
             </div>
             <div className="mb-4 sm:flex gap-4 items-center">
               <label className="block text-gray-900 font-medium w-full">
-                Enter New Password
+                Nhập mật khẩu mới
               </label>
               <input
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
-                placeholder="Enter New Password"
+                placeholder="Nhập mật khẩu mới"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md"
               />
             </div>
             <div className="mb-4 sm:flex gap-4 items-center">
               <label className="block text-gray-900 font-medium w-full">
-                Confirm New Password
+                Nhập lại mật khẩu mới
               </label>
               <input
                 type="password"
                 value={confirmNewPassword}
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
-                placeholder="Confirm New Password"
+                placeholder="Nhập lại mật khẩu mới"
                 className="w-full px-4 py-2 border border-gray-300 rounded-md"
               />
             </div>
@@ -84,14 +84,14 @@ const SettingPopup = () => {
                 onClick={() => dispatch(toggleSettingPopup())}
                 className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300"
               >
-                CANCEL
+                Hủy
               </button>
               <button
                 type="submit"
                 disabled={loading}
                 className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800"
               >
-                CONFIRM
+                Đồng ý
               </button>
             </div>
           </form>

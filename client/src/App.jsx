@@ -31,6 +31,7 @@ const App = () => {
 
     if (user.role === "Admin") {
       dispatch(fetchAllUsers());
+      console.log("Đã gọi fetchAllUsers()");  
       dispatch(fetchAllBorrowedBooks());
     }
   }, [dispatch, isAuthenticated, user?.role]);

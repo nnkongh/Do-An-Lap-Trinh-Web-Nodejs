@@ -71,9 +71,9 @@ const Login = () => {
               <Link to="/password/forgot" className="font-semibold text-black mb-12 block">Quên mật khẩu</Link>
               <div className="block md:hidden font-semibold mt-5">
                 <p>
-                  New to our platform?{" "}
+                  Người mới tham gia?{" "}
                   <Link to="/register" className="text-sm text-gray-500 hover:underline">
-                    Sign Up
+                    Đăng ký
                   </Link>
                 </p>
               </div>
@@ -86,7 +86,7 @@ const Login = () => {
                 }`}
                 disabled={loading}
               >
-                SIGN IN
+                Đăng nhập
               </button>
             </form>
           </div>
