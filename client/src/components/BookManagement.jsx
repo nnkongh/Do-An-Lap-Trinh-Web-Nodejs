@@ -103,45 +103,45 @@ const BookManagement = () => {
                   </tr>
                 </thead>
                 <tbody>
-  {
-    searchedBooks.map((book, index) => (
-      <tr key={book._id} className={(index + 1) % 2 === 0 ? "bg-gray-50" : ""}>
-        <td className="px-4 py-2">{index + 1}</td>
-        <td className="px-4 py-2">{book.title}</td>
-        <td className="px-4 py-2">{book.author}</td>
-        {
-          isAuthenticated && user?.role === "Admin" && (
-            <td className="px-4 py-2">{book.quantity}</td>
-          )
-        }
-        <td className="px-4 py-2">{`$${book.price}`}</td>
-        <td className="px-4 py-2">{book.available ? "Available" : "Unavailable"}</td>
-        {
-          isAuthenticated && user?.role === "Admin" && (
-            <td className="px-4 py-2 flex space-x-3 my-3 justify-center items-center">
-              <BookA
-                className="cursor-pointer hover:text-blue-600"
-                onClick={() => openReadPopup(book._id)}
-              />
-              <NotebookPen
-                className="cursor-pointer hover:text-green-600"
-                onClick={() => openRecordBookPopup(book._id)}
-              />
-              <Trash2
-                className="cursor-pointer hover:text-red-600"
-                onClick={() => {
-                  if (window.confirm(`Are you sure to delete "${book.title}"?`)) {
-                    dispatch(deleteBook(book._id));
+                  {
+                    searchedBooks.map((book, index) => (
+                      <tr key={book._id} className={(index + 1) % 2 === 0 ? "bg-gray-50" : ""}>
+                        <td className="px-4 py-2">{index + 1}</td>
+                        <td className="px-4 py-2">{book.title}</td>
+                        <td className="px-4 py-2">{book.author}</td>
+                        {
+                          isAuthenticated && user?.role === "Admin" && (
+                            <td className="px-4 py-2">{book.quantity}</td>
+                          )
+                        }
+                        <td className="px-4 py-2">{`$${book.price}`}</td>
+                        <td>{book.availability ? "Available" : "Unavailable"}</td>
+                        {
+                          isAuthenticated && user?.role === "Admin" && (
+                            <td className="px-4 py-2 flex space-x-3 my-3 justify-center items-center">
+                              <BookA
+                                className="cursor-pointer hover:text-blue-600"
+                                onClick={() => openReadPopup(book._id)}
+                              />
+                              <NotebookPen
+                                className="cursor-pointer hover:text-green-600"
+                                onClick={() => openRecordBookPopup(book._id)}
+                              />
+                              <Trash2
+                                className="cursor-pointer hover:text-red-600"
+                                onClick={() => {
+                                  if (window.confirm(`Are you sure to delete "${book.title}"?`)) {
+                                    dispatch(deleteBook(book._id));
+                                  }
+                                }}
+                              />
+                            </td>
+                          )
+                        }
+                      </tr>
+                    ))
                   }
-                }}
-              />
-            </td>
-          )
-        }
-      </tr>
-    ))
-  }
-</tbody>
+                </tbody>
               </table>
             </div>
           ) : (

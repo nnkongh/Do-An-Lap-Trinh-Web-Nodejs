@@ -11,7 +11,7 @@ export const addBook = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Vui lòng điền đầy đủ thông tin", 400));
     }
 
-    const book = await Book.create({ title, author, description, price, quantity });
+    const book = await Book.create({ title, author, description, price, quantity,availability: quantity > 0 });
 
     res.status(201).json({
         success: true,
