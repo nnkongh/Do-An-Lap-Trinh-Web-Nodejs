@@ -57,13 +57,13 @@ const Register = () => {
               />
             </div>
             <p className="text-gray-300 mb-12">
-              Already have an account? Sign in now
+              Đã có tài khoản? Đăng nhập ngay!
             </p>
             <Link
               to="/login"
               className="border-2 rounded-lg font-semibold border-white py-2 px-8 hover:bg-white hover:text-black transition"
             >
-              SIGN IN
+              Đăng nhập
             </Link>
           </div>
         </div>
@@ -73,12 +73,12 @@ const Register = () => {
           <div className="w-full max-w-sm">
             <div className="flex justify-center mb-12">
               <div className="flex flex-col-reverse sm:flex-row items-center justify-center gap-5">
-                <h3 className="font-medium text-4xl overflow-hidden">Sign UP</h3>
+                <h3 className="font-medium text-4xl overflow-hidden">Đăng ký</h3>
                 <img src={logo} alt="logo" className="h-auto w-24 object-cover" />
               </div>
             </div>
             <p className="text-gray-500 text-center mb-6">
-              Create your account by filling the info below
+              Tạo tài khoản bằng cách nhập vào các trường bên dưới
             </p>
 
             <form onSubmit={handleRegister}>
@@ -126,7 +126,7 @@ const Register = () => {
                 type="submit"
                 className="border-2 mt-5 border-black w-full font-semibold bg-black text-white py-2 rounded-lg hover:bg-white hover:text-black transition"
               >
-                SIGN UP
+                Đăng ký
               </button>
             </form>
           </div>

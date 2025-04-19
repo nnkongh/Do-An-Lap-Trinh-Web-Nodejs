@@ -52,7 +52,7 @@ const ResetPassword = () => {
               <img src={logo_with_title} alt="logo" className="mb-12 h-44 w-auto" />
             </div>
             <h3 className="text-gray-300 mb-12 max-w-[320px] mx-auto text-3xl font-medium leading-relaxed">
-              Your premier digital library for borrowing and reading books
+            Thư viện số hàng đầu để bạn mượn và đọc sách!
             </h3>
           </div>
         </div>
@@ -63,7 +63,7 @@ const ResetPassword = () => {
             to={"/password/forgot"}
             className="border-2 border-black rounded-3xl font-bold w-32 py-2 px-4 absolute top-10 left-8 hover:bg-black hover:text-white transition duration-300"
           >
-            Back
+            Quay lại
           </Link>
 
           <div className="w-full max-w-sm">
@@ -71,8 +71,8 @@ const ResetPassword = () => {
               <img src={logo} alt="logo" className="h-24 w-auto" />
             </div>
 
-            <h1 className="text-4xl font-medium text-center mb-5">Reset Password</h1>
-            <p className="text-gray-800 text-center mb-12">Please enter your new password</p>
+            <h1 className="text-4xl font-medium text-center mb-5">Reset mật khẩu</h1>
+            <p className="text-gray-800 text-center mb-12">Vui lòng nhập mật khẩu mới</p>
 
             <form onSubmit={handleResetPassword}>
               <div className="mb-4">

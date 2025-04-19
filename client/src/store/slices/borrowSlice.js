@@ -125,7 +125,7 @@ export const recordBorrowedBook = (email, id) => async (dispatch) => {
   dispatch(borrowSlice.actions.recordBookRequest());
   await axios
     .post(
-      `http://localhost:4000/api/v1/borrow/record-borrow/${id}`,
+      `http://localhost:4000/api/v1/borrow/record-borrow-book/${id}`,
       { email },
       {
         withCredentials: true,

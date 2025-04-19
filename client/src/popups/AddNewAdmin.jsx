@@ -68,7 +68,7 @@ const AddNewAdmin = () => {
           className="absolute top-4 right-4 cursor-pointer w-6 h-6"
           onClick={handleClose}
         />
-        <h2 className="text-xl font-semibold mb-4">Add New Admin</h2>
+        <h2 className="text-xl font-semibold mb-4">Thêm Admin mới</h2>
         <form onSubmit={handleCreateAdmin}>
           <input
             type="text"
@@ -101,7 +101,7 @@ const AddNewAdmin = () => {
             type="submit"
             className="bg-black text-white px-4 py-2 rounded w-full"
           >
-            Create Admin
+            Tạo Admin
           </button>
         </form>
       </div>

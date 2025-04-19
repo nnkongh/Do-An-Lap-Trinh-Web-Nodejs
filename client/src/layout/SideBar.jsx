@@ -53,14 +53,14 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
             onClick={() => setSelectedComponent("Dashboard")}
             className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
           >
-            <img src={dashboardIcon} alt="icon" /> <span>Dashboard</span>
+            <img src={dashboardIcon} alt="icon" /> <span>Trang chủ</span>
           </button>
 
           <button
             onClick={() => setSelectedComponent("Books")}
             className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
           >
-            <img src={bookIcon} alt="icon" /> <span>Books</span>
+            <img src={bookIcon} alt="icon" /> <span>Sách</span>
           </button>
 
           {isAuthenticated && user?.role === "Admin" && (
@@ -69,21 +69,21 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
                 onClick={() => setSelectedComponent("Catalog")}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
               >
-                <img src={catalogIcon} alt="icon" /> <span>Catalog</span>
+                <img src={catalogIcon} alt="icon" /> <span>Danh mục</span>
               </button>
 
               <button
                 onClick={() => setSelectedComponent("Users")}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
               >
-                <img src={usersIcon} alt="icon" /> <span>Users</span>
+                <img src={usersIcon} alt="icon" /> <span>Người dùng</span>
               </button>
 
               <button
                 onClick={() => dispatch(toggleAddNewAdminPopup())}
                 className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
               >
-                <RiAdminFill className="w-6 h-6" /> <span>Add New Admin</span>
+                <RiAdminFill className="w-6 h-6" /> <span>Thêm Admin mới</span>
               </button>
             </>
           )}
@@ -93,7 +93,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
               onClick={() => setSelectedComponent("My Borrowed Books")}
               className="w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
             >
-              <img src={catalogIcon} alt="icon" /> <span>My Borrowed Books</span>
+              <img src={catalogIcon} alt="icon" /> <span>Sách tôi đã mượn</span>
             </button>
           )}
 
@@ -101,7 +101,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
             onClick={() => dispatch(toggleSettingPopup())}
             className="md:hidden w-full py-2 font-medium bg-transparent rounded-md hover:cursor-pointer flex items-center space-x-2"
           >
-            <img src={settingIcon} alt="icon" /> <span>Update Credentials</span>
+            <img src={settingIcon} alt="icon" /> <span>Cập nhật mật khẩu</span>
           </button>
         </nav>
 
@@ -110,7 +110,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
             className="py-2 font-medium text-center bg-transparent rounded-md hover:cursor-pointer flex items-center justify-center space-x-5 mb-7 mx-auto w-fit"
             onClick={handleLogout}
           >
-            <img src={logoutIcon} alt="icon" /> <span>Log Out</span>
+            <img src={logoutIcon} alt="icon" /> <span>Đăng xuất</span>
           </button>
         </div>
 

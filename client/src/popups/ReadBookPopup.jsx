@@ -7,7 +7,7 @@ const ReadBookPopup = ({ book }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 p-5 flex items-center justify-center z-50">
       <div className="w-11/12 bg-white rounded-lg shadow-lg sm:w-1/2 lg:w-1/3">
         <div className="flex justify-between items-center bg-black text-white px-6 py-4 rounded-t-lg">
-          <h2 className="text-lg font-bold">View Book Info</h2>
+          <h2 className="text-lg font-bold">Thông tin sách</h2>
           <button
             className="text-white text-lg font-bold"
             onClick={() => dispatch(toggleReadBookPopup())}
@@ -17,19 +17,19 @@ const ReadBookPopup = ({ book }) => {
         </div>
         <div className="p-6">
           <div className='mb-4'>
-            <label className='block text-gray-700 font-semibold'>Book Title</label>
+            <label className='block text-gray-700 font-semibold'>Tiêu đề sách</label>
             <p className='border border-gray-300 rounded-lg px-4 py-2 bg-gray-100'>
               {book && book.title}
               </p>
           </div>
           <div className='mb-4'>
-            <label className='block text-gray-700 font-semibold'>Author</label>
+            <label className='block text-gray-700 font-semibold'>Tác giả</label>
             <p className='border border-gray-300 rounded-lg px-4 py-2 bg-gray-100'>
               {book && book.author}
               </p>
           </div>
           <div className='mb-4'>
-            <label className='block text-gray-700 font-semibold'>Description</label>
+            <label className='block text-gray-700 font-semibold'>Mô tả</label>
             <p className='border border-gray-300 rounded-lg px-4 py-2 bg-gray-100'>
               {book && book.description}
               </p>

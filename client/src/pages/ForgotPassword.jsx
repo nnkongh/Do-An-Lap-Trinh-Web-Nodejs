@@ -46,7 +46,7 @@ const ForgotPassword = () => {
               <img src={logo_with_title} alt="logo" className="mb-12 h-44 w-auto" />
             </div>
             <h3 className="text-gray-300 mb-12 max-w-[320px] mx-auto text-3xl font-medium leading-relaxed">
-              Your premier digital library for borrowing and reading books
+              Thư viện số hàng đầu để bạn mượn và đọc sách!
             </h3>
           </div>
         </div>
@@ -65,8 +65,8 @@ const ForgotPassword = () => {
               <img src={logo} alt="logo" className="h-24 w-auto" />
             </div>
 
-            <h1 className="text-4xl font-medium text-center mb-5">Forgot Password</h1>
-            <p className="text-gray-800 text-center mb-12">Please enter your email</p>
+            <h1 className="text-4xl font-medium text-center mb-5">Quên mật khẩu</h1>
+            <p className="text-gray-800 text-center mb-12">Vui lòng nhập email</p>
 
             <form onSubmit={handleForgotPassword}>
               <div className="mb-4">

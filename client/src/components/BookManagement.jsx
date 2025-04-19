@@ -86,18 +86,18 @@ const BookManagement = () => {
                 <thead>
                   <tr className="bg-gray-200">
                     <th className="px-4 py-2 text-left">Id</th>
-                    <th className="px-4 py-2 text-left">Name</th>
-                    <th className="px-4 py-2 text-left">Author</th>
+                    <th className="px-4 py-2 text-left">Tên</th>
+                    <th className="px-4 py-2 text-left">Tác giả</th>
                     {
                       isAuthenticated && user?.role === "Admin" && (
-                        <th className="px-4 py-2 text-left">Quantity</th>
+                        <th className="px-4 py-2 text-left">Số lượng</th>
                       )
                     }
-                    <th className="px-4 py-2 text-left">Price</th>
-                    <th className="px-4 py-2 text-left">Availability</th>
+                    <th className="px-4 py-2 text-left">Giá</th>
+                    <th className="px-4 py-2 text-left">Có thể dụng</th>
                     {
                       isAuthenticated && user?.role === "Admin" && (
-                        <th className="px-4 py-2 text-center">Actions</th>
+                        <th className="px-4 py-2 text-center">Hành động</th>
                       )
                     }
                   </tr>
@@ -130,7 +130,7 @@ const BookManagement = () => {
                               <Trash2
                                 className="cursor-pointer hover:text-red-600"
                                 onClick={() => {
-                                  if (window.confirm(`Are you sure to delete "${book.title}"?`)) {
+                                  if (window.confirm(`Bạn có chắc muốn xóa "${book.title}"?`)) {
                                     dispatch(deleteBook(book._id));
                                   }
                                 }}

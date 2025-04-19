@@ -26,6 +26,7 @@ const MyBorrowedBooks = () => {
         date.getMinutes()
       ).padStart(2, "0")}:${String(date.getSeconds()).padStart(2, "0")}`;
       const result=`${formattedDate} ${formattedTime}`;
+      return result;
     } 
 
     const [filter,setFilter] = useState("returned");

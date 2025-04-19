@@ -74,14 +74,14 @@ const UserDashboard = () => {
                 <span className="bg-gray-300 h-20 lg:h-full">
                   <img src={bookIcon} alt="book-icon" className="w-8 h-8" />
                 </span>
-                <p className="text-lg xl:text-xl font-semibold">Your Borrowed Book List</p>
+                <p className="text-lg xl:text-xl font-semibold">Danh sách sách bạn mượn</p>
               </div>
               <div className="flex items-center gap-3 bg-white p-5 min-h-[120px] overflow-y-hidden
                rounded-lg transition hover:shadow-inner duration-300">
                 <span className="w-[2px] bg-black h-20 lg:h-full"></span>
                 <span className="bg-gray-300 h-20 lg:h-full"><img src={returnIcon} alt="book-icon" className="w-8 h-8" />
                 </span>
-                <p className="text-lg xl:text-xl font-semibold">Your Returned Book List</p>
+                <p className="text-lg xl:text-xl font-semibold">Danh sách sách bạn trả</p>
               </div>
             </div>
             <div className="flex flex-col lg:flex-row gap-7 ">
@@ -92,7 +92,7 @@ const UserDashboard = () => {
                   <img src={browseIcon} alt="book-icon" className="w-8 h-8" />
                 </span>
                 <p className="text-lg xl:text-xl font-semibold">
-                  Let's browse books inventory
+                  Duyệt danh sách kiểm 
                 </p>
               </div>
               <img src={logo_with_title} alt="logo" className="hidden lg:block w-auto justify-end" />
@@ -101,7 +101,7 @@ const UserDashboard = () => {
           <div className="bg-white p-7 text-lg sm:text-xl xl:text-3xl 2xl:text-4xl min-h-52 font-semibold relative flex-[3] flex justify-center items-center rounded-2xl">
             <h4 className="overflow-y-hidden">""</h4>
             <p className="text-gray-700 text-sm sm:text-lg absolute right-[35px] sm:right-[78px] bottom-[10px]">
-              ~ BookWorm Team
+              
             </p>
           </div>
         </div>
@@ -123,11 +123,11 @@ const UserDashboard = () => {
             <div className="flex flex-col gap-5">
               <p className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-[#3D3E3E]"></span>
-                <span>Total Borrowed Books</span>
+                <span>Tổng số sách mượn</span>
               </p>
               <p className="flex items-center gap-3">
                 <span className="w-3 h-3 rounded-full bg-[#151619]"></span>
-                <span>Total Returned Books</span>
+                <span>Tổng số sách trả</span>
               </p>
             </div>
 

@@ -100,7 +100,9 @@ const Catalog = () => {
                     <th className="px-4 py-2 text-left">Thời gian</th>
                     <th className="px-4 py-2 text-left">Trả sách</th>
                   </tr>
-                  <tbody>
+                  
+                </thead>
+                <tbody>
                     {
                       booksToDisplay.map((book,index) => (
                         <tr key={index} className={(index + 1)% 2 === 0 ? "bg-gray-50" : ""}>
@@ -122,7 +124,6 @@ const Catalog = () => {
                        
                     )}
                   </tbody>
-                </thead>
               </table>
             </div>
 
